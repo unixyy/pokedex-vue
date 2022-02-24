@@ -54,7 +54,7 @@ app.component('pokelist',{
     /*html*/
         `
         <div v-if="selected" class="centertext">
-        <img :src="getImgSelected(apokemon)" height="512" width="512">
+        <img :src="getImgSelected(apokemon)" height="450" width="450">
             <table class="tableselect">
             <tr>
                 <td class="trselect">Name : <span style="color:red">{{capitalize(apokemon.name)}}</span></td>
