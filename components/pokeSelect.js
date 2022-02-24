@@ -1,0 +1,5 @@
+app.component('pokeselect', {
+    data(){
+        
+    }
+})

@@ -12,41 +12,28 @@
 </head>
 <body>
     <div id="app">
-        <img class="center" src="./assets/pokemonlogo.png">
-        <div id="test"></div>
-        <ul>
-            <li v-for="(pokemon,index) in pokelist">
-                <table>
-                    <tr id="namepokemon"><td>Name : {{pokemon.name}}</td></tr>
-                    <tr id="idpokemon"><td>Id: {{index+1}}</td></tr>
-                    <tr id="imgpokemon"><td><img :src="urlimg(index)" width="200" height="200"></td></tr>
-                </table>
-                
-            </li>
-        </ul>
+        <img class="center" src="./assets/pokemonlogo.png" style="width: 30%; height: 30%;">
+        <input type="text" id="search" class="searchinput center" placeholder="Search" v-model.lazy="name" @change="getSearch()">
+        <div v-if="name != ''">
+            <ul>
+                <li v-for="(pokemon,index) in pokesearch">
+                    <table>
+                        <tr id="imgpokemon"><td><img :src="getImgSearch(index)" width="256" height="256"></td></tr>
+                        <tr id="namepokemon" class="tabletext"><td>Name : {{capitalize(pokemon.name)}}</td></tr>
+                        <tr id="idpokemon" class="tabletext"><td>Id: {{pokemon.id}}</td></tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+        <pokelist v-else></pokelist>
     </div>
     <!-- scripts -->
     
     <!-- Import App -->
     <script src="./main.js"></script>
     <script src="./components/Pokemon.js"></script>
-    <!-- <script>
-        const P = new Pokedex.Pokedex()
 
-        const interval = {
-        offset: 0,
-        limit: 10,
-        }
-        P.getPokemonsList(interval).then(function(response) {
-            console.log(response.results[0].name)
-            for(elt in response.results) {
-                document.getElementById('test').innerHTML += "\n" + response.results[elt].name + "\n"
-            }
-        })
-        
-    </script> -->
-
-    <!-- Mount App & initialise wrapper -->
+    <!-- Mount App -->
     <script>
         const mountedApp = app.mount('#app');
 

@@ -21,8 +21,9 @@ time, mark, audio, video {
 }
 
 /* styles */
-.text{
+html{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: white;
 }
 
 .xl{
@@ -45,18 +46,28 @@ ul {
     display:flex;
     flex-wrap: wrap;
     list-style: none;
-    margin-left:auto;
-    margin-right:auto;
+    justify-content: space-around;
 }
 
 li {
-    background-color: lightblue;
+    border-radius: 1em;
 }
 tr,td {
     border-collapse: collapse;
     text-align: center;
-
+    
 }
 table {
-    border: 1px solid white;
+    border-style: hidden;
+    
+}
+
+.tabletext {
+    font-size:1em;
+}
+
+.searchinput {
+    width:15%;
+    margin-bottom:20px;
+    font-size: 1.5em;
 }
