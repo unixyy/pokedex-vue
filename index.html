@@ -12,19 +12,20 @@
 </head>
 <body>
     <div id="app">
-        <img class="center" src="./assets/pokemonlogo.png" style="width: 20%; height: 20%;">
+        <img class="center" src="./assets/pokemonlogo.png" style="width: 20%; height: 20%;cursor: pointer;" @click="reload()">
         <input type="text" id="search" class="searchinput center" placeholder="Search by Name/ID" v-model.lazy="name" @change="getSearch()">
+        <div class="centertext" style="font-size:1em;" >tap enter to search after writing</div>
 
         <div v-if="selected" class="centertext">
             <img :src="getImgSelected(apokemon)" height="512" width="512">
                 <table class="tableselect">
                 <tr>
                     <td class="trselect">Name : <span style="color:red">{{capitalize(apokemon.name)}}</span></td>
-                    <td class="trselect">Id : {{apokemon.id}}</td>
+                    <td class="selectedtext">Weight : {{apokemon.weight/10}}Kg</td>
                 </tr>
                 <tr>
+                    <td class="trselect">Id : {{apokemon.id}}</td>
                     <td class="selectedtext">Height : {{apokemon.height/10}}m</td>
-                    <td class="selectedtext">Weight : {{apokemon.weight/10}}Kg</td>
                 </tr>
                 <tr><td>Types : </td></tr>
                 <tr v-for="elt in apokemon.types">

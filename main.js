@@ -70,6 +70,9 @@ const app = Vue.createApp({
                 return pokemon.sprites.other["official-artwork"].front_default;
             }
         },
+        reload(){
+            window.location.reload();
+        },
         showAPokemon(pokemon){
             window.scrollTo({top:0,behavior:'smooth'})
             this.apokemon = pokemon

@@ -58,11 +58,11 @@ app.component('pokelist',{
             <table class="tableselect">
             <tr>
                 <td class="trselect">Name : <span style="color:red">{{capitalize(apokemon.name)}}</span></td>
-                <td class="trselect">Id : {{apokemon.id}}</td>
+                <td class="selectedtext">Weight : {{apokemon.weight}}Kg</td>
             </tr>
             <tr>
+                <td class="trselect">Id : {{apokemon.id}}</td>
                 <td class="selectedtext">Height : {{apokemon.height/10}}m</td>
-                <td class="selectedtext">Weight : {{apokemon.weight}}Kg</td>
             </tr>
             <tr><td>Types : </td></tr>
             <tr v-for="elt in apokemon.types">
