@@ -12,13 +12,37 @@
 </head>
 <body>
     <div id="app">
-        <img class="center" src="./assets/pokemonlogo.png" style="width: 30%; height: 30%;">
-        <input type="text" id="search" class="searchinput center" placeholder="Search" v-model.lazy="name" @change="getSearch()">
-        <div v-if="name != ''">
+        <img class="center" src="./assets/pokemonlogo.png" style="width: 20%; height: 20%;">
+        <input type="text" id="search" class="searchinput center" placeholder="Search by Name/ID" v-model.lazy="name" @change="getSearch()">
+
+        <div v-if="selected" class="centertext">
+            <img :src="getImgSelected(apokemon)" height="512" width="512">
+                <table class="tableselect">
+                <tr>
+                    <td class="trselect">Name : <span style="color:red">{{capitalize(apokemon.name)}}</span></td>
+                    <td class="trselect">Id : {{apokemon.id}}</td>
+                </tr>
+                <tr>
+                    <td class="selectedtext">Height : {{apokemon.height/10}}m</td>
+                    <td class="selectedtext">Weight : {{apokemon.weight/10}}Kg</td>
+                </tr>
+                <tr><td>Types : </td></tr>
+                <tr v-for="elt in apokemon.types">
+                    <td style="text-align:right;">{{elt.type.name}}</td>
+                </tr>
+                <tr><td>Stats :</td></tr>
+                <tr v-for="elt in apokemon.stats" >
+                    <td style="text-align: right;">{{elt.stat.name}} :</td>
+                    <td style="text-align: left;">{{elt.base_stat}}</td>
+                </tr>
+                </table>
+        </div>
+
+        <div v-if="name != '' && searching">
             <ul>
                 <li v-for="(pokemon,index) in pokesearch">
                     <table>
-                        <tr id="imgpokemon"><td><img :src="getImgSearch(index)" width="256" height="256"></td></tr>
+                        <tr id="imgpokemon"><td><img style="cursor: pointer;" :src="getImgSearch(index)" width="256" height="256" @click="showAPokemon(pokemon)"></td></tr>
                         <tr id="namepokemon" class="tabletext"><td>Name : {{capitalize(pokemon.name)}}</td></tr>
                         <tr id="idpokemon" class="tabletext"><td>Id: {{pokemon.id}}</td></tr>
                     </table>
@@ -32,6 +56,7 @@
     <!-- Import App -->
     <script src="./main.js"></script>
     <script src="./components/Pokemon.js"></script>
+    <script src="./components/selectedPokemon.js"></script>
 
     <!-- Mount App -->
     <script>
