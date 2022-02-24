@@ -28,6 +28,7 @@ const app = Vue.createApp({
                 this.searching = true
                 this.getAPokemon(this.name)
             }else{
+                this.name = this.name.toLowerCase()
                 if(this.name == ''){
                     this.searching = false
                 }else {
